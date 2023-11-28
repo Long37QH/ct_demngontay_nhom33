@@ -93,8 +93,12 @@ while True:
     if not ok:
         continue
     frame = cv2.flip(frame, 1)
+
+    # Đánh dấu landmarks của bàn tay
     frame, results = detectHandsLandmarks(frame, hands_videos, display=False)
+    #kiểm tra nếu thấy landmarks
     if results.multi_hand_landmarks:
+        # Đếm số ngón tay mở của mõi bàn tay
         frame, fingers_statuses, count = countFingers(frame, results, display=False)
     cv2.imshow('Chuong trinh dem ngon tay', frame)
     k = cv2.waitKey(1)
